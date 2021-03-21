@@ -7,10 +7,13 @@ const Style = createGlobalStyle`
         box-sizing: border-box;
     }
     body{
-        background-color: #fcfcfc;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        background-color: #F9A4A4;
+        color: #424242;
+        font-family: 'Poppins', sans-serif;
+        max-width: 1200px !important;
+    }
+    .App{
+        max-width: 1200px
     }
 `;
 

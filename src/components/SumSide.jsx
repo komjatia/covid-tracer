@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SideOject from "./SideObject";
 import { findDOMNode } from "react-dom";
 
-export default function SumSide({ state }) {
+export default function SumSide({ state, setVs }) {
   const [countries, setCountries] = useState(state);
   const [sortByConfirmed, setSortByConfirmed] = useState();
   const [sortByRecovered, setSortByRecovered] = useState();
@@ -85,27 +85,39 @@ export default function SumSide({ state }) {
         <p onClick={sortByDeathsF}>Deaths</p>
       </div>
       {ShowCountry
-        ? countries.map((data) => <SideOject f={data} key={data.ID} />)
+        ? countries.map((data) => (
+            <SideOject f={data} key={data.ID} setVs={setVs} />
+          ))
         : null}
       {sortType === "confirmed"
-        ? sortByConfirmed.map((data) => <SideOject f={data} key={data.ID} />)
+        ? sortByConfirmed.map((data) => (
+            <SideOject f={data} key={data.ID} setVs={setVs} />
+          ))
         : null}
       {sortType === "deaths"
-        ? sortByDeaths.map((data) => <SideOject f={data} key={data.ID} />)
+        ? sortByDeaths.map((data) => (
+            <SideOject f={data} key={data.ID} setVs={setVs} />
+          ))
         : null}
       {sortType === "recovered"
-        ? sortByRecovered.map((data) => <SideOject f={data} key={data.ID} />)
+        ? sortByRecovered.map((data) => (
+            <SideOject f={data} key={data.ID} setVs={setVs} />
+          ))
         : null}
     </StyledContainer>
   );
 }
 const StyledContainer = styled.div`
   height: 85vh;
-  width: 80vw;
+  width: 50vw;
   overflow: scroll;
   border-radius: 10px;
   margin: 2rem;
-  background-color: rgba(209, 209, 209, 0.7);
+  background: rgba(255, 255, 255, 0.651);
+  box-shadow: 0 8px 32px 0 rgba(250, 166, 166, 0.37);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 10px;
 
   .options {
     display: flex;
@@ -113,7 +125,10 @@ const StyledContainer = styled.div`
     justify-content: center;
     padding: 1rem 0;
     text-align: center;
-    background-color: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.651);
+    box-shadow: 0 8px 32px 0 rgba(250, 166, 166, 0.37);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     p {
       width: 22vw;
       cursor: pointer;

@@ -4,11 +4,15 @@ import styled from "styled-components";
 
 //import Data
 
-export default function SideObject({ f }) {
+export default function SideObject({ f, setVs }) {
+  const setF = (e) => {
+    setVs(e.target.childNodes[1].data);
+  };
+
   return (
     <StyledObject>
       <StyledCountryConatiner>
-        <p>{f.Country}</p>
+        <p onClick={setF}> {f.Country}</p>
       </StyledCountryConatiner>
       <StyledCaseConatiner>
         <p>{f.TotalConfirmed}</p>
