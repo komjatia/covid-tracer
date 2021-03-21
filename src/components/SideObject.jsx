@@ -8,16 +8,16 @@ export default function SideObject({ f }) {
   return (
     <StyledObject>
       <StyledCountryConatiner>
-        <p>{f.country}</p>
+        <p>{f.Country}</p>
       </StyledCountryConatiner>
       <StyledCaseConatiner>
-        <p>{f.stats.confirmed}</p>
+        <p>{f.TotalConfirmed}</p>
       </StyledCaseConatiner>
       <StyledCaseConatiner>
-        <p>{f.stats.deaths}</p>
+        <p>{f.TotalRecovered}</p>
       </StyledCaseConatiner>
       <StyledCaseConatiner>
-        <p>{f.stats.recovered}</p>
+        <p>{f.TotalDeaths}</p>
       </StyledCaseConatiner>
     </StyledObject>
   );
