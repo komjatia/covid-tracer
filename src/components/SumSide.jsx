@@ -14,11 +14,10 @@ export default function SumSide({ state, setVs }) {
   const [click, setclick] = useState(false);
 
   const sortByConfirmedF = () => {
-    const d = click;
     setShowCountry(false);
     setSortType("confirmed");
     if (countries) {
-      if (d) {
+      if (click) {
         const t = countries
           .filter((t) => t.TotalConfirmed)
           .sort((a, b) => a.TotalConfirmed - b.TotalConfirmed);
@@ -34,12 +33,31 @@ export default function SumSide({ state, setVs }) {
     }
   };
 
-  const sortByRecoveredF = () => {
-    const d = click;
+  const sort = (sortBy) => {
     setShowCountry(false);
     setSortType("recovered");
     if (countries) {
-      if (d) {
+      if (click) {
+        const t = countries
+          .filter((t) => t.sortBy)
+          .sort((a, b) => a.sortBy - b.sortBy);
+        setSortByRecovered(t);
+        setclick(false);
+      } else {
+        const t = countries
+          .filter((t) => t.sortBy)
+          .sort((a, b) => b.sortBy - a.sortBy);
+        setSortByRecovered(t);
+        setclick(true);
+      }
+    }
+  };
+
+  const sortByRecoveredF = () => {
+    setShowCountry(false);
+    setSortType("recovered");
+    if (countries) {
+      if (click) {
         const t = countries
           .filter((t) => t.TotalRecovered)
           .sort((a, b) => a.TotalRecovered - b.TotalRecovered);
@@ -56,11 +74,10 @@ export default function SumSide({ state, setVs }) {
   };
 
   const sortByDeathsF = () => {
-    const d = click;
     setShowCountry(false);
     setSortType("deaths");
     if (countries) {
-      if (d) {
+      if (click) {
         const t = countries
           .filter((t) => t.TotalDeaths)
           .sort((a, b) => a.TotalDeaths - b.TotalDeaths);
