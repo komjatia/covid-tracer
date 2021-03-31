@@ -8,6 +8,7 @@ import VerticalSlide from "./components/VerticalSlide";
 import GlobalStyle from "./GlobalStyle";
 
 function App() {
+  const [loading, setLoading] = useState();
   const [countries, setCountries] = useState();
   const [global, setGlobal] = useState();
   const [vs, setVs] = useState();
@@ -23,6 +24,7 @@ function App() {
   const [R, setR] = useState(false);
   const [countriesVerC, setCountriesVerC] = useState();
   useEffect(async () => {
+    setLoading(true);
     const country = await axios.get("https://api.covid19api.com/summary");
     const vaccineC = await axios.get(
       "https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1"
@@ -42,6 +44,7 @@ function App() {
     setVaccinesC(vaccineC.data);
     setVaccines(vaccine.data);
     setAllPopulation(population.data);
+    setLoading(false);
   }, []);
   useEffect(() => {
     if (countries) {
@@ -61,7 +64,7 @@ function App() {
     <div className='App'>
       <GlobalStyle />
       <Header />
-      {vaccinesC && vaccines && (
+      {loading && (
         <VerticalSlide
           filteredData={countriesVer}
           population={allPopulation}
@@ -80,7 +83,7 @@ function App() {
           R={R}
         />
       )}
-      {countries && (
+      {loading && (
         <SumSide
           state={countries}
           setVs={setVs}

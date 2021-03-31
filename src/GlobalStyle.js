@@ -10,10 +10,6 @@ const Style = createGlobalStyle`
         background-color: #F9A4A4;
         color: #424242;
         font-family: 'Poppins', sans-serif;
-        max-width: 1200px !important;
-    }
-    .App{
-        max-width: 1200px
     }
 `;
 

@@ -130,10 +130,7 @@ const StyledContainer = styled.div`
   overflow: scroll;
   border-radius: 10px;
   margin: 2rem;
-  background: rgba(255, 255, 255, 0.651);
-  box-shadow: 0 8px 32px 0 rgba(250, 166, 166, 0.37);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+
   border-radius: 10px;
 
   .options {
